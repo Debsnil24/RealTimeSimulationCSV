@@ -3,8 +3,8 @@ import time
 import pyrebase
 from collections.abc import Mapping, MutableMapping
 from FirebaseConfig import firebase
-dataFeedRate = 10
-dataSource = 'Waterlevel.csv'
+dataFeedRate = 10               # Time interval b/w each Data push
+dataSource = 'Waterlevel.csv'   # Data Source
 storage = firebase.storage()
 database = firebase.database()
 
