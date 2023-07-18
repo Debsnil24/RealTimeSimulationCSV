@@ -3,12 +3,13 @@ import time
 import pyrebase
 from collections.abc import Mapping, MutableMapping
 from FirebaseConfig import firebase
-
+dataFeedRate = 10
+dataSource = 'Waterlevel.csv'
 storage = firebase.storage()
 database = firebase.database()
 
 # Open the CSV file
-with open('Waterlevel.csv', 'r') as csvfile:
+with open(dataSource, 'r') as csvfile:
     # Create a CSV reader object
     csvreader = csv.reader(csvfile)
     
@@ -31,7 +32,7 @@ with open('Waterlevel.csv', 'r') as csvfile:
             database.set(data)
             
             # Wait for x seconds before continuing
-            time.sleep(10)
+            time.sleep(dataFeedRate)
         i += 1
         csvfile.seek(0)
         next(csvreader)
